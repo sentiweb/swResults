@@ -14,9 +14,9 @@ get_current_path = function() {
   path = NULL
   if( !is.null(oo) ) {
     p = oo[["path_provider"]]
-    if(!is.null()) {
+    if(!is.null(p)) {
       if(is.function(p)) {
-        path = do.call(p)
+        path = do.call(p, list())
       } else {
         path = p
       }
