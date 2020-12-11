@@ -1,17 +1,18 @@
 Package: swResults
 Type: Package
 Title: Manipulate Output Assets Description And Context
-Version: 0.2.0
-Author: Clément Turbelin <clement.turbelin@upmc.fr>
-Maintainer: Clément Turbelin <clement.turbelin@upmc.fr>
-Description: swResults provides a set of functions to manipulate description and context of generated static files (csv, results)
-    These description and context are used by an external system to build dynamic UI to present the results when they are static. An example is Results Server
-License: MIT
+Version: 0.3.0
+Author: Clément Turbelin <clement.turbelin@iplesp.upmc.fr>
+Maintainer: Clément Turbelin <clement.turbelin@iplesp.upmc.fr>
+Description: swResults provides a set of functions to manipulate description and context of generated static files (csv, images, ...)
+    These description and context are used by an external system to build dynamic UI to present the results when they are static.
+License: MIT + file LICENCE
 Encoding: UTF-8
 LazyData: true
 Imports:
  R6 (>= 2.2),
  ggplot2 (>= 3.0.0),
  rlang (>= 0.4),
- jsonlite
+ jsonlite,
+ methods
 RoxygenNote: 7.1.1
