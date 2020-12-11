@@ -31,11 +31,21 @@ desc_output = result_desc_output
 
 #' Get description from plot title
 #' @export
-result_desc_plot = function(plot=NULL) {
+result_desc_plot = function(plot=NULL, use.subtitle=NULL) {
   if(is.null(plot) || isTRUE(plot)) {
     plot = ggplot2::last_plot()
   }
-  plot$labels$title
+  title = plot$labels$title
+  if(is.null(use.subtitle)) {
+    # Default behaviour
+    use.subtitle = TRUE # Could be in options() in future
+  }
+  if(use.subtitle) {
+    if(!is.null(plot$labels$subtitle)) {
+      title = paste0(title, ", ", plot$labels$subtitle)
+    }
+  }
+  title
 }
 
 #' Create a readme file, usable by results server to show description of a directory
@@ -104,16 +114,21 @@ result_desc_filters = function(auto=FALSE, filters, path=NULL) {
 #' @name result_desc_filters
 desc_filters = result_desc_filters
 
-#' Create a filter
+#' Create a filter description
+#'
+#' A filter will allow to create a filtering widget based on a label of the results files's context
+#'
 #' @param name filter name, the filter name is the name of the context label to filter on
-#' @param label filter label
+#' @param label filter label to show on the UI
 #' @param values list of possibles values for the label
+#' @param tooltip string tooltip to show on the filter label
 #' @export
-result_filter = function(name, label, values=NULL, ...) {
+result_filter = function(name, label, values=NULL, tooltip=NULL, ...) {
   structure(list(
     label=label,
     values=values,
     name=name,
+    tooltip=tooltip,
     ...
   ), class="result_filter")
 }

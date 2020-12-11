@@ -2,17 +2,19 @@
 % Please edit documentation in R/desc.R
 \name{result_filter}
 \alias{result_filter}
-\title{Create a filter}
+\title{Create a filter description}
 \usage{
-result_filter(name, label, values = NULL, ...)
+result_filter(name, label, values = NULL, tooltip = NULL, ...)
 }
 \arguments{
 \item{name}{filter name, the filter name is the name of the context label to filter on}
 
-\item{label}{filter label}
+\item{label}{filter label to show on the UI}
 
 \item{values}{list of possibles values for the label}
+
+\item{tooltip}{string tooltip to show on the filter label}
 }
 \description{
-Create a filter
+A filter will allow to create a filtering widget based on a label of the results files's context
 }

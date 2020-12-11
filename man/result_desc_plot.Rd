@@ -4,7 +4,7 @@
 \alias{result_desc_plot}
 \title{Get description from plot title}
 \usage{
-result_desc_plot(plot = NULL)
+result_desc_plot(plot = NULL, use.subtitle = NULL)
 }
 \description{
 Get description from plot title

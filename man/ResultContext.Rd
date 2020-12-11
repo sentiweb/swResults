@@ -2,20 +2,20 @@
 % Please edit documentation in R/context.R
 \name{ResultContext}
 \alias{ResultContext}
-\title{Create a layered set of named values for context description off a set of files
+\title{ResultContext Creates a layered set of named values for context description
 Context is a dynamic list of named values, that can be updated by layer.
 A full context is the merge of all values of all layers, with the rule, last layer overrides the first one.}
 \description{
-Create a layered set of named values for context description off a set of files
+ResultContext Creates a layered set of named values for context description
 Context is a dynamic list of named values, that can be updated by layer.
 A full context is the merge of all values of all layers, with the rule, last layer overrides the first one.
 
-Create a layered set of named values for context description off a set of files
+ResultContext Creates a layered set of named values for context description
 Context is a dynamic list of named values, that can be updated by layer.
 A full context is the merge of all values of all layers, with the rule, last layer overrides the first one.
 }
 \details{
-Context is used to manage the context of a set of files, typically during the generation of them.
+Context is used to manage the context of a set of files, typically during the generation of them (you know well the context of a file when you create it)
 
 For example, during data analysis, a  high number of files can be generated and some can share the same context (same output, same analysis method, same step, ...)
 The context can be used to manage this shared context, an create a dedicated context for each file or group of file.
@@ -30,7 +30,7 @@ context = ResultContext$new()
 context$set(step="main")
 context$push() # Create a new layer
 context$set(level=1)
-context$resolve()
+context$resolve() # get the values for all merged layers
 context$pop() # Get back to first layer
 context$resolve()
 }
