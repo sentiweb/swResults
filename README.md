@@ -85,7 +85,7 @@ g_save = function(..., width, height, units="in", plot=last_plot(), desc=list())
   ctx = context$resolve()
   desc = modifyList(ctx, desc) # merge with file defined meta
   ggsave(file, width=width, height = height, plot=plot, units=units)
-  desc_output(file, desc=desc)
+  result_desc_output(file, desc=desc)
 }
 
 # Doing things...
