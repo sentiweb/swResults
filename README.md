@@ -93,3 +93,29 @@ g_save("my_plot.pdf", width=10, height=11) # Output graph with metadaa
 
 ```
 
+## Directory contents
+
+Results can be organized by directory and each directory can have a readme file and define filters.
+
+Filters allow to define a set of labels (with possible values).  
+
+`result_desc_filters(filters, path)` will create a filters definition into the given path (if NULL then the path will be get from the path_provider option)
+
+## Option
+
+Package options can be defined in "swResults" entry in  `options()` as a list of options :
+
+Available options :
+
+- path_provider : Current path (to defined filters or readme in directory) used when `path` parameter is null . It can be a function to call returning
+  the current output directory
+
+
+## Technical implementation
+
+Metadata are currently stored as hidden files in the filesystem alongside with the files
+
+A file will have a metadata file named with a '.d_' prefix. (e.g "plot.pdf" will have metadata in a file named '.d_plot.pdf')
+
+Filters are stored in a '.filters.json' file in the directory and readme in a '.readme' file
+
