@@ -1,7 +1,7 @@
 Package: swResults
 Type: Package
 Title: Manipulate Output Assets Description And Context
-Version: 0.3.0
+Version: 0.3.1
 Author: Clément Turbelin <clement.turbelin@iplesp.upmc.fr>
 Maintainer: Clément Turbelin <clement.turbelin@iplesp.upmc.fr>
 Description: swResults provides a set of functions to manipulate description and context of generated static files (csv, images, ...)
