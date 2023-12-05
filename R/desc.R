@@ -48,23 +48,45 @@ result_desc_plot = function(plot=NULL, use.subtitle=NULL) {
   title
 }
 
+format_readme = function(contents, title=NULL, path=NULL, markdown=FALSE) {
+  if(markdown) {
+    do_p = function(contents) contents
+    do_title=function(title, contents) c(paste0("# ", title), contents)
+  } else {
+    do_p = function(contents) {
+      if(length(contents) > 1) {
+        paste0("<p>", contents,"</p>")
+      } else {
+        contents
+      }
+    }
+    do_title = function(title, contents) {
+      c("<div class=\"card-header\">", title,"</div><div class=\"card-body\">", contents,"</div></div>")
+    }
+  }
+
+  contents = c(do_p(contents))
+
+  if(!is.null(title)) {
+    readme = do_title(title, contents)
+  } else {
+    readme = contents
+  }
+  paste(readme, collapse = "\n")
+}
+
+
 #' Create a readme file, usable by results server to show description of a directory
 #' @param contents readme contents
 #' @param title title of the readme
 #' @param path file path, by default use get_current_path() to get current path from configuration
 #' @export
-result_desc_readme = function(contents, title=NULL, path=NULL) {
-  if(length(contents) > 1) {
-    contents = paste("<p>", contents,"</p>")
-  }
-  html = c(contents)
-  if(!is.null(title)) {
-    html = c("<div class=\"card-header\">", title,"</div><div class=\"card-body\">", html,"</div></div>")
-  }
+result_desc_readme = function(contents, title=NULL, path=NULL, markdown=FALSE) {
+  readme = format_readme(contents, title=title, markdown = markdown)
   if(is.null(path)) {
     path = get_current_path()
   }
-  write(paste(html, collapse = "\n"), file=paste0(path, "/.readme"))
+  write(readme, file=paste0(path, "/.readme"))
 }
 
 #' @export
